@@ -1,0 +1,30 @@
+{
+  "name": "philippgrashoff/atkdataupdatenotification",
+  "description": "",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "require": {
+    "atk4/data": "2.4.*",
+    "philippgrashoff/traitsforatkdata": "2.4.*",
+    "philippgrashoff/mtomforatk": "2.4.*"
+  },
+  "require-dev": {
+    "atk4/login": "2.4.*",
+    "phpunit/phpunit": ">9"
+  },
+  "autoload": {
+    "psr-4": {
+      "atkdataupdatenotification\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "atkdataupdatenotification\\tests\\": "tests"
+    }
+  }
+}
