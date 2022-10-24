@@ -72,7 +72,7 @@ class UpdateNotification extends Model
         $this->addMToMReferenceAndDeleteHook(
             UpdateNotificationToUser::class,
             '',
-            [],
+            ['their_field' => 'update_notification_id'],
             ['userModel' => $this->userModel]
         );
 

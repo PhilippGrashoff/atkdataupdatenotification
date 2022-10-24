@@ -23,6 +23,6 @@ class OtherUserModel extends Model
             ['type' => 'string']
         );
 
-        $this->addMToMReferenceAndDeleteHook(UpdateNotificationToUser::class);
+        $this->addMToMReferenceAndDeleteHook(UpdateNotificationToUser::class, '', [], ['userModel' => __CLASS__]);
     }
 }

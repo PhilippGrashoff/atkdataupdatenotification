@@ -7,6 +7,7 @@ use atk4\data\Exception;
 use Atk4\Data\Persistence;
 use Atk4\Schema\Migration;
 use Atk4\Ui\App;
+use atkdataupdatenotification\tests\testclasses\OtherUserModel;
 use atkdataupdatenotification\tests\testclasses\UserModel;
 use atkdataupdatenotification\UpdateNotification;
 use atkdataupdatenotification\UpdateNotificationToUser;
@@ -19,6 +20,7 @@ class UpdateNotificationTest extends TestCase
 
     protected $sqlitePersistenceModels = [
         UserModel::class => [],
+        OtherUserModel::class => [],
         UpdateNotification::class => ['userModel' => UserModel::class],
         UpdateNotificationToUser::class => ['userModel' => UserModel::class]
     ];
@@ -119,6 +121,16 @@ class UpdateNotificationTest extends TestCase
         self::assertEquals(
             2,
             $message1->action('count')->getOne()
+        );
+    }
+
+    public function testWithOtherUserModel(): void
+    {
+        $otherUserModel = new OtherUserModel($this->persistence);
+        $ref = $otherUserModel->refModel(UpdateNotificationToUser::class);
+        self::assertSame(
+            OtherUserModel::class,
+            $ref->userModel
         );
     }
 }
